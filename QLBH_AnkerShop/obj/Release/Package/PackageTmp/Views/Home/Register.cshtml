@@ -1,0 +1,50 @@
+﻿@model DATA.Entity.KhachHang
+@{
+    ViewBag.Title = "Đăng Ký";
+    Layout = "~/Views/Shared/_LayoutAnker.cshtml";
+}
+
+<!-- /account/register -->
+<!-- Path -->
+<div class="py-12 bg-slate-300 text-center mt-[116px]">
+    <a class="text-slate-500 mx-2" href="/">Trang chủ</a> / <span class="mx-2">Tạo tài khoản</span>
+</div>
+<!-- register -->
+<form method="post" class="my-10 flex flex-col items-center gap-3">
+    <h2 class="text-center font-bold text-[24px]">Tạo tài khoản</h2>
+    <input type="text"
+           class="p-2 py-3 bg-gray-100 w-[350px] outline-none border"
+           placeholder="Họ"
+           value="@ViewBag.Ho"
+           required
+           name="Ho">
+    <input type="text"
+           class="p-2 py-3 bg-gray-100 w-[350px] outline-none border"
+           placeholder="Tên"
+           value="@ViewBag.Ten"
+           required
+           name="Ten">
+
+    <input type="text"
+           class="p-2 py-3 bg-gray-100 w-[350px] outline-none border"
+           placeholder="Email"
+           value="@ViewBag.TaiKhoan"
+           required
+           name="TaiKhoan">
+    <input type="password"
+           class="p-2 py-3 bg-gray-100 w-[350px] outline-none border"
+           placeholder="Mật khẩu"
+           value="@ViewBag.MatKhau"
+           required
+           name="MatKhau">
+    <p class="text-red-600">@ViewBag.error</p>
+    <button class="bg-red-500 font-semibold text-white py-1 w-[350px]">
+        Tạo tài khoản
+    </button>
+    <p>
+        Bạn đã có tài khoản ?
+        <a href="/home/login">Đăng nhập ở đây</a>
+
+    </p>
+    <a href="/">Quay trở lại cửa hàng</a>
+</form>

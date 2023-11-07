@@ -1,0 +1,12 @@
+D:\THCode\NTU\2023-2024\ASP_MVC\QLBH_AnkerShop\DATA\bin\Release\DATA.dll.config
+D:\THCode\NTU\2023-2024\ASP_MVC\QLBH_AnkerShop\DATA\bin\Release\DATA.dll
+D:\THCode\NTU\2023-2024\ASP_MVC\QLBH_AnkerShop\DATA\bin\Release\DATA.pdb
+D:\THCode\NTU\2023-2024\ASP_MVC\QLBH_AnkerShop\DATA\bin\Release\EntityFramework.dll
+D:\THCode\NTU\2023-2024\ASP_MVC\QLBH_AnkerShop\DATA\bin\Release\EntityFramework.SqlServer.dll
+D:\THCode\NTU\2023-2024\ASP_MVC\QLBH_AnkerShop\DATA\bin\Release\EntityFramework.xml
+D:\THCode\NTU\2023-2024\ASP_MVC\QLBH_AnkerShop\DATA\bin\Release\EntityFramework.SqlServer.xml
+D:\THCode\NTU\2023-2024\ASP_MVC\QLBH_AnkerShop\DATA\obj\Release\DATA.csproj.AssemblyReference.cache
+D:\THCode\NTU\2023-2024\ASP_MVC\QLBH_AnkerShop\DATA\obj\Release\DATA.csproj.CoreCompileInputs.cache
+D:\THCode\NTU\2023-2024\ASP_MVC\QLBH_AnkerShop\DATA\obj\Release\DATA.csproj.CopyComplete
+D:\THCode\NTU\2023-2024\ASP_MVC\QLBH_AnkerShop\DATA\obj\Release\DATA.dll
+D:\THCode\NTU\2023-2024\ASP_MVC\QLBH_AnkerShop\DATA\obj\Release\DATA.pdb

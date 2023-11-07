@@ -1,0 +1,136 @@
+﻿@model DATA.Entity.KhachHang
+
+@{
+    ViewBag.Title = "CaiDat";
+    Layout = "~/Views/Shared/_LayoutAnker.cshtml";
+}
+<!-- component -->
+<div class="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
+    <div class="container max-w-screen-lg mx-auto">
+        <div>
+            <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
+                <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
+                    <div class="text-gray-600">
+                        <p class="font-medium text-lg">Thông tin tài khoản</p>
+                    </div>
+                    
+                    <form class="lg:col-span-2" method="post">
+                        <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
+                            <div class="md:col-span-3">
+                                <label class="w-[90px]" for="Ten">Họ</label>
+                                <input type="text" name="ho" id="Ten" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="@Model.Ho" />
+                            </div>
+                            <div class="md:col-span-3">
+                                <label class="w-[90px]" for="Ten">Tên</label>
+                                <input type="text" name="ten" id="Ten" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="@Model.Ten" />
+                            </div>
+                            <div class="md:col-span-2">
+                                <label for="email">Địa Chỉ Email</label>
+                                <input type="text" name="email" id="email" class="h-10 border mt-1 text-gray-500 rounded px-4 w-full bg-gray-50" value="@Model.TaiKhoan" disabled />
+                            </div>
+
+                            <div class="md:col-span-3">
+                                <label class="w-[90px]" for="sdt">Số Điện Thoại</label>
+                                <input type="text" name="sdt" id="sdt" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="@Model.Sdt" />
+                            </div>
+
+                            @{
+
+                                if (Model.DiaChi != null)
+                                {
+                                    string[] parts = Model.DiaChi.Split(',');
+                                    if (parts.Length >= 4)
+                                    {
+                                        string result1 = parts[0].Trim();
+                                        string result2 = parts[1].Trim();
+                                        string result3 = parts[2].Trim();
+                                        string result4 = parts[3].Trim();
+
+                                        <div class="md:col-span-2">
+                                            <label for="diaChi">Địa Chỉ / Đường</label>
+                                            <input type="text" name="diaChi" id="diaChi" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="@result1" placeholder="" />
+                                        </div>
+
+                                        <div class="md:col-span-3">
+                                            <label for="tp" class="w-[90px]">Thành Phố</label>
+                                            <input type="text" name="tp" id="tp" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="@result2" placeholder="" />
+                                        </div>
+
+                                        <div class="md:col-span-2">
+                                            <label for="tinh">Tỉnh</label>
+                                            <input type="text" name="tinh" id="tinh" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="@result3" placeholder="" />
+                                        </div>
+
+                                        <div class="md:col-span-3">
+                                            <label for="QuocGia" class="min-w-[90px]">Quốc Gia/ Khu Vực</label>
+                                            <input type="text" name="quocGia" id="QuocGia" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="@result4" placeholder="" />
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="md:col-span-2">
+                                        <label for="diaChi">Địa Chỉ / Đường</label>
+                                        <input type="text" name="diaChi" id="diaChi" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="" />
+                                    </div>
+
+                                    <div class="md:col-span-3">
+                                        <label for="tp" class="w-[90px]">Thành Phố</label>
+                                        <input type="text" name="tp" id="tp" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="" />
+                                    </div>
+
+                                    <div class="md:col-span-2">
+                                        <label for="tinh">Tỉnh</label>
+                                        <input type="text" name="tinh" id="tinh" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="" />
+                                    </div>
+
+                                    <div class="md:col-span-3">
+                                        <label for="QuocGia" class="min-w-[90px]">Quốc Gia/ Khu Vực</label>
+                                        <input type="text" name="quocGia" id="QuocGia" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="" />
+                                    </div>
+                                }
+
+                            }
+
+
+
+                            <div class="md:col-span-2">
+                                <label for="zipcode" class="w-[90px]">Zipcode</label>
+                                <input type="text" name="zipcode" id="zipcode" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="" value="" />
+                            </div>
+
+                            <div class="md:col-span-3">
+                                <div class="w-[100px]">Giới Tính</div>
+                                <div class="flex gap-4">
+                                    <label class="flex bg-gray-100 text-gray-700 rounded-md px-3 py-2 my-3  hover:bg-indigo-300 cursor-pointer ">
+                                        <input type="radio" name="gioiTinh" value="true" required @(Model?.GioiTinh == true ? "checked" : "" )>
+                                        <i class="pl-2">Nam</i>
+                                    </label>
+
+                                    <label class="flex bg-gray-100 text-gray-700 rounded-md px-3 py-2 my-3  hover:bg-indigo-300 cursor-pointer ">
+                                        <input type="radio" name="gioiTinh" value="false" required @(Model?.GioiTinh == false ? "checked" : "")>
+                                        <i class="pl-2">Nữ</i>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="leading-loose">Ngày Sinh</label>
+                                <div class="relative focus-within:text-gray-600 text-gray-400">
+
+                                    <input value="@Model.NgaySinh.Value.ToString("yyyy-MM-dd")" required id="ngaySinh" type="date" class="pr-4 pl-2 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600" placeholder="24/05/2003" name="ngaySinh">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:col-span-5 text-right">
+                            <div class="inline-flex items-end">
+                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Cập nhật</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                </div>
+            </div>
+        </div>
+</div>

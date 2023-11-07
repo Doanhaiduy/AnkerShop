@@ -1,0 +1,351 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLBH_AnkerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="QLBH_AnkerEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(QLBH_AnkerModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(QLBH_AnkerModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="DanhMucs" EntityType="QLBH_AnkerModel.DanhMuc" />
+    <EntitySet Name="DonHangs" EntityType="QLBH_AnkerModel.DonHang" />
+    <EntitySet Name="GioHangs" EntityType="QLBH_AnkerModel.GioHang" />
+    <EntitySet Name="KhachHangs" EntityType="QLBH_AnkerModel.KhachHang" />
+    <EntitySet Name="MoTaSanPhams" EntityType="QLBH_AnkerModel.MoTaSanPham" />
+    <EntitySet Name="PhuongThucs" EntityType="QLBH_AnkerModel.PhuongThuc" />
+    <EntitySet Name="SanPhams" EntityType="QLBH_AnkerModel.SanPham" />
+    <EntitySet Name="SanPhamDonHangs" EntityType="QLBH_AnkerModel.SanPhamDonHang" />
+    <EntitySet Name="SanPhamGioHangs" EntityType="QLBH_AnkerModel.SanPhamGioHang" />
+    <EntitySet Name="sysdiagrams" EntityType="QLBH_AnkerModel.sysdiagram" />
+    <EntitySet Name="TaiKhoanAdmins" EntityType="QLBH_AnkerModel.TaiKhoanAdmin" />
+    <AssociationSet Name="FK_SanPham_DanhMuc" Association="QLBH_AnkerModel.FK_SanPham_DanhMuc">
+      <End Role="DanhMuc" EntitySet="DanhMucs" />
+      <End Role="SanPham" EntitySet="SanPhams" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DonHang__IdKH__0D7A0286" Association="QLBH_AnkerModel.FK__DonHang__IdKH__0D7A0286">
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+      <End Role="DonHang" EntitySet="DonHangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DonHang_PhuongThuc" Association="QLBH_AnkerModel.FK_DonHang_PhuongThuc">
+      <End Role="PhuongThuc" EntitySet="PhuongThucs" />
+      <End Role="DonHang" EntitySet="DonHangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SanPhamDonHang_DonHang" Association="QLBH_AnkerModel.FK_SanPhamDonHang_DonHang">
+      <End Role="DonHang" EntitySet="DonHangs" />
+      <End Role="SanPhamDonHang" EntitySet="SanPhamDonHangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GioHang__IdKH__123EB7A3" Association="QLBH_AnkerModel.FK__GioHang__IdKH__123EB7A3">
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+      <End Role="GioHang" EntitySet="GioHangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SanPhamGioHang_GioHang" Association="QLBH_AnkerModel.FK_SanPhamGioHang_GioHang">
+      <End Role="GioHang" EntitySet="GioHangs" />
+      <End Role="SanPhamGioHang" EntitySet="SanPhamGioHangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MoTaSanPham_SanPham" Association="QLBH_AnkerModel.FK_MoTaSanPham_SanPham">
+      <End Role="SanPham" EntitySet="SanPhams" />
+      <End Role="MoTaSanPham" EntitySet="MoTaSanPhams" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SanPhamDonHang_SanPham" Association="QLBH_AnkerModel.FK_SanPhamDonHang_SanPham">
+      <End Role="SanPham" EntitySet="SanPhams" />
+      <End Role="SanPhamDonHang" EntitySet="SanPhamDonHangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SanPhamGioHang_SanPham" Association="QLBH_AnkerModel.FK_SanPhamGioHang_SanPham">
+      <End Role="SanPham" EntitySet="SanPhams" />
+      <End Role="SanPhamGioHang" EntitySet="SanPhamGioHangs" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="DanhMuc">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Ten" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SanPhams" Relationship="QLBH_AnkerModel.FK_SanPham_DanhMuc" FromRole="DanhMuc" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="DonHang">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IdKH" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IdPT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DienThoai" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="GhiChuDonHang" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
+    <Property Name="TongTienThanhToan" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="NgayTaoDon" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="KhachHang" Relationship="QLBH_AnkerModel.FK__DonHang__IdKH__0D7A0286" FromRole="DonHang" ToRole="KhachHang" />
+    <NavigationProperty Name="PhuongThuc" Relationship="QLBH_AnkerModel.FK_DonHang_PhuongThuc" FromRole="DonHang" ToRole="PhuongThuc" />
+    <NavigationProperty Name="SanPhamDonHangs" Relationship="QLBH_AnkerModel.FK_SanPhamDonHang_DonHang" FromRole="DonHang" ToRole="SanPhamDonHang" />
+  </EntityType>
+  <EntityType Name="GioHang">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IdKH" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="NgayCapNhat" Type="DateTime" Precision="3" />
+    <Property Name="TongTien" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="KhachHang" Relationship="QLBH_AnkerModel.FK__GioHang__IdKH__123EB7A3" FromRole="GioHang" ToRole="KhachHang" />
+    <NavigationProperty Name="SanPhamGioHangs" Relationship="QLBH_AnkerModel.FK_SanPhamGioHang_GioHang" FromRole="GioHang" ToRole="SanPhamGioHang" />
+  </EntityType>
+  <EntityType Name="KhachHang">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MatKhau" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TaiKhoan" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ho" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ten" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+    <Property Name="GioiTinh" Type="Boolean" />
+    <Property Name="DiaChi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Sdt" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="NgayTao" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="DonHangs" Relationship="QLBH_AnkerModel.FK__DonHang__IdKH__0D7A0286" FromRole="KhachHang" ToRole="DonHang" />
+    <NavigationProperty Name="GioHangs" Relationship="QLBH_AnkerModel.FK__GioHang__IdKH__123EB7A3" FromRole="KhachHang" ToRole="GioHang" />
+  </EntityType>
+  <EntityType Name="MoTaSanPham">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdSP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Anh" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SanPham" Relationship="QLBH_AnkerModel.FK_MoTaSanPham_SanPham" FromRole="MoTaSanPham" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="PhuongThuc">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TenPT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhiVanChuyen" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="DonHangs" Relationship="QLBH_AnkerModel.FK_DonHang_PhuongThuc" FromRole="PhuongThuc" ToRole="DonHang" />
+  </EntityType>
+  <EntityType Name="SanPham">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TenSP" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Gia" Type="Decimal" Nullable="false" Precision="10" Scale="0" />
+    <Property Name="SoLuong" Type="Int32" Nullable="false" />
+    <Property Name="IdDanhMuc" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Anh" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="NgayNhap" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="DanhMuc" Relationship="QLBH_AnkerModel.FK_SanPham_DanhMuc" FromRole="SanPham" ToRole="DanhMuc" />
+    <NavigationProperty Name="MoTaSanPhams" Relationship="QLBH_AnkerModel.FK_MoTaSanPham_SanPham" FromRole="SanPham" ToRole="MoTaSanPham" />
+    <NavigationProperty Name="SanPhamDonHangs" Relationship="QLBH_AnkerModel.FK_SanPhamDonHang_SanPham" FromRole="SanPham" ToRole="SanPhamDonHang" />
+    <NavigationProperty Name="SanPhamGioHangs" Relationship="QLBH_AnkerModel.FK_SanPhamGioHang_SanPham" FromRole="SanPham" ToRole="SanPhamGioHang" />
+  </EntityType>
+  <EntityType Name="SanPhamDonHang">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdSP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IdDonHang" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TenSP" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Anh" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="DanhMuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Gia" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="DonHang" Relationship="QLBH_AnkerModel.FK_SanPhamDonHang_DonHang" FromRole="SanPhamDonHang" ToRole="DonHang" />
+    <NavigationProperty Name="SanPham" Relationship="QLBH_AnkerModel.FK_SanPhamDonHang_SanPham" FromRole="SanPhamDonHang" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="SanPhamGioHang">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdGH" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IdSP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="Gia" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="NgayThem" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="GioHang" Relationship="QLBH_AnkerModel.FK_SanPhamGioHang_GioHang" FromRole="SanPhamGioHang" ToRole="GioHang" />
+    <NavigationProperty Name="SanPham" Relationship="QLBH_AnkerModel.FK_SanPhamGioHang_SanPham" FromRole="SanPhamGioHang" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TaiKhoanAdmin">
+    <Key>
+      <PropertyRef Name="TaiKhoan" />
+    </Key>
+    <Property Name="TaiKhoan" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="MatKhau" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="Ho" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ten" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="HinhAnh" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_SanPham_DanhMuc">
+    <End Type="QLBH_AnkerModel.DanhMuc" Role="DanhMuc" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="QLBH_AnkerModel.SanPham" Role="SanPham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DanhMuc">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SanPham">
+        <PropertyRef Name="IdDanhMuc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DonHang__IdKH__0D7A0286">
+    <End Type="QLBH_AnkerModel.KhachHang" Role="KhachHang" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="QLBH_AnkerModel.DonHang" Role="DonHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DonHang">
+        <PropertyRef Name="IdKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DonHang_PhuongThuc">
+    <End Type="QLBH_AnkerModel.PhuongThuc" Role="PhuongThuc" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="QLBH_AnkerModel.DonHang" Role="DonHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhuongThuc">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DonHang">
+        <PropertyRef Name="IdPT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SanPhamDonHang_DonHang">
+    <End Type="QLBH_AnkerModel.DonHang" Role="DonHang" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="QLBH_AnkerModel.SanPhamDonHang" Role="SanPhamDonHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DonHang">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SanPhamDonHang">
+        <PropertyRef Name="IdDonHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GioHang__IdKH__123EB7A3">
+    <End Type="QLBH_AnkerModel.KhachHang" Role="KhachHang" Multiplicity="0..1" />
+    <End Type="QLBH_AnkerModel.GioHang" Role="GioHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GioHang">
+        <PropertyRef Name="IdKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SanPhamGioHang_GioHang">
+    <End Type="QLBH_AnkerModel.GioHang" Role="GioHang" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="QLBH_AnkerModel.SanPhamGioHang" Role="SanPhamGioHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GioHang">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SanPhamGioHang">
+        <PropertyRef Name="IdGH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MoTaSanPham_SanPham">
+    <End Type="QLBH_AnkerModel.SanPham" Role="SanPham" Multiplicity="0..1" />
+    <End Type="QLBH_AnkerModel.MoTaSanPham" Role="MoTaSanPham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MoTaSanPham">
+        <PropertyRef Name="IdSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SanPhamDonHang_SanPham">
+    <End Type="QLBH_AnkerModel.SanPham" Role="SanPham" Multiplicity="0..1" />
+    <End Type="QLBH_AnkerModel.SanPhamDonHang" Role="SanPhamDonHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SanPhamDonHang">
+        <PropertyRef Name="IdSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SanPhamGioHang_SanPham">
+    <End Type="QLBH_AnkerModel.SanPham" Role="SanPham" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="QLBH_AnkerModel.SanPhamGioHang" Role="SanPhamGioHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SanPhamGioHang">
+        <PropertyRef Name="IdSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

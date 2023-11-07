@@ -1,0 +1,63 @@
+﻿@model List<DATA.Entity.SanPham>
+@{
+    ViewBag.Title = "DanhMuc";
+    Layout = "~/Views/Shared/_LayoutAnker.cshtml";
+}
+
+<!-- /collection/:name -->
+<!-- Path -->
+<div class="py-12 bg-slate-300 text-center mt-[116px]">
+    <a class="text-slate-500 mx-2" href="/">Trang chủ</a> / <span class="mx-2">Danh mục</span>
+</div>
+
+<div class="px-[10vw] my-12">
+    <div class="px-2 py-3 border">
+        <form class="">
+            <span class="font-medium text-[16px]">Lọc theo</span>
+            <select name="idDanhMuc" id="" class="border p-1 outline-none rounded-[4px]">
+                <option value="">Tất cả</option>
+                @foreach (var item in ViewBag.danhMuc)
+                {
+                    <option @(ViewBag.luachon == item.Id ? "selected" : null) value="@item.Id" >@item.Ten</option>
+                }
+            </select>
+            <button class="bg-red-700 px-2 py-1 text-white rounded-[4px]">Thực hiện</button>
+        </form>
+    </div>
+    <div class="grid grid-cols-4 mt-3 gap-2">
+        @foreach (var item in Model)
+        {
+            <div class=" bg-white border border-gray-200 shadow ">
+                <a href="@Url.Action("details","Sanpham", new { id = item.Id })" class="relative group">
+
+                    @{
+                        var imageUrl = item.Anh;
+                        if (!System.IO.File.Exists(Server.MapPath(imageUrl)))
+                        {
+                            imageUrl = Url.Content("/assets/imgs/index/product/pro_1.webp");
+                        }
+                    }
+                    <img class="p-4 rounded-t-lg w-full h-[236px] object-cover rounded-[4px]" src="@imageUrl"
+                         alt="Product" />
+                    <span class="absolute top-[10px] left-[10px] px-4 text-[12px] py-1 bg-red-400 rounded-[3px] font-bold text-white">-40%</span>
+                    <span class="absolute top-[50%] translate-y-[-50%] left-[50%] text-center translate-x-[-50%] px-4 py-1 bg-red-400 text-[16px] font-bold text-white hidden group-hover:block">
+                        MUA
+                        NHANH
+                    </span>
+                </a>
+                <div class="px-5 pb-5">
+                    <a href="#">
+                        <h5 class=" tracking-tight text-gray-900 text-center font-bold">
+                            @item.TenSP
+                        </h5>
+                    </a>
+                    <p class="flex items-center mt-2.5 gap-1 justify-center font-medium">
+                        <span class="line-through">@string.Format("{0:#,0}", item.Gia + 300000)đ</span>
+                        <span>@string.Format("{0:#,0}", item.Gia)₫</span>
+
+                    </p>
+                </div>
+            </div>
+        }
+    </div>
+</div>

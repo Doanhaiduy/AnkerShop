@@ -1,0 +1,60 @@
+﻿@model DATA.Entity.SanPham
+
+@{
+    ViewBag.Title = "CapNhat";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
+    <p class="text-xl pb-2 flex items-center m-6">
+        <i class="fas fa-list mr-3"></i> Cập Nhật Sản Phẩm
+    </p>
+    <div class="w-full lg:w-1/2 mt-2 pl-0 lg:pl-2 mx-auto">
+
+        <div class="leading-loose">
+            <form method="post" class="p-10 bg-white rounded shadow-xl" enctype="multipart/form-data">
+                <p class="text-lg text-gray-800 font-medium pb-4">Sửa Sản Phẩm</p>
+                <div class="">
+                    <label class="block text-sm text-gray-600" for="tenSP">Tên sản phẩm</label>
+                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="tenSP" value="@Model.TenSP" name="tenSP" type="text" required="" placeholder="Tên sản phẩm" aria-label="tenSP">
+                </div>
+                <div class="inline-block mt-2 w-1/2 pr-1">
+                    <label class="block text-sm text-gray-600" for="Gia">Giá sản phẩm</label>
+                    <input class="w-full pl-5  py-1 text-gray-700 bg-gray-200 rounded" id="Gia" value="@Model.Gia" name="Gia" type="number" required="" min="1000" placeholder="Giá sản phẩm" aria-label="Gia">
+                </div>
+                <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
+                    <label class=" block text-sm text-gray-600" for="SoLuong">Số lượng</label>
+                    <input class="w-full pl-5 py-1 text-gray-700 bg-gray-200 rounded" id="SoLuong" value="@Model.SoLuong" name="SoLuong" type="number" min="1" required="" placeholder="Số lượng" aria-label="SoLuong">
+                </div>
+                <div class="mt-2">
+                    <label class=" block text-sm text-gray-600" for="MoTa">Mô tả</label>
+                    <textarea class="w-full px-5 py-2 text-gray-700 bg-gray-200 rounded" id="message" name="MoTa" rows="6" required="" placeholder="Mô tả sản phẩm.." aria-label="MoTa">@Model.MoTa</textarea>
+                </div>
+                <div class="">
+                    <label class="block text-sm text-gray-600" for="Anh">Ảnh sản phẩm</label>
+                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="Anh" value="@Model.Anh" name="fileUpload" type="file"  placeholder="Thêm ảnh sản phẩm" aria-label="Anh">
+                </div>
+               
+                <div class="form-group">
+                    <label class="block text-sm text-gray-600" for="Anh">Danh mục</label>
+                    <select id="IdDanhMuc" name="IdDanhMuc" class="border p-2 rounded-[8px] w-1/2 outline-blue-600 text-gray-700 bg-gray-200 rounded" >
+                        @foreach (var item in new DATA.mapDanhMuc().LoadDanhSach())
+                        {
+                            <option class="" value="@item.Id" @(item.Id == Model.DanhMuc.Id ? "selected" : null)>@item.Ten</option>
+                        }
+                    </select>
+
+                </div>
+                <div class="mt-6 flex justify-between">
+                    <div></div>
+                    <div>
+                        <a href="/admin/sanpham/danhsach" class="px-4 py-2 text-white font-light tracking-wider bg-red-600 rounded">Hủy</a>
+                        <button class="px-4 py-1 text-white font-light tracking-wider bg-blue-600 rounded" type="submit">Cập nhật</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <p class="pt-6 text-gray-600">
+        </p>
+    </div>
+
+</div>

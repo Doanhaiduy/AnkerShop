@@ -1,0 +1,198 @@
+﻿@model IEnumerable<DATA.Entity.KhachHang>
+
+@{
+    ViewBag.title = "Anker | Khách Hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="w-full overflow-x-hidden border-t flex flex-col">
+    <main class="w-full flex-grow p-6">
+        <form method="get">
+        <p class="text-xl pb-3 flex items-center">
+            <i class="fas fa-list mr-3"></i> Thống kê Tháng <select name="thang" class="form-select appearance-none mx-3
+      block
+      px-3
+      py-1.5
+      text-[20px]
+      font-normal
+      text-gray-700
+      bg-white bg-clip-padding bg-no-repeat
+      border border-solid border-gray-300
+      rounded
+      transition
+      ease-in-out
+      m-0
+      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+            <option value="1" @(ViewBag.thang == 1 ? "selected" : null)>1</option>
+            <option value="2" @(ViewBag.thang == 2 ? "selected" : null)>2</option>
+            <option value="3" @(ViewBag.thang == 3 ? "selected" : null)>3</option>
+            <option value="4" @(ViewBag.thang == 4 ? "selected" : null)>4</option>
+            <option value="5" @(ViewBag.thang == 5 ? "selected" : null)>5</option>
+            <option value="6" @(ViewBag.thang == 6 ? "selected" : null)>6</option>
+            <option value="7" @(ViewBag.thang == 7 ? "selected" : null)>7</option>
+            <option value="8" @(ViewBag.thang == 8 ? "selected" : null)>8</option>
+            <option value="9" @(ViewBag.thang == 9 ? "selected" : null)>9</option>
+            <option value="10" @(ViewBag.thang == 10 ? "selected" : null)>10</option>
+            <option value="11" @(ViewBag.thang == 11 ? "selected" : null)>11</option>
+            <option value="12" @(ViewBag.thang == 12 ? "selected" : null)>12</option>
+        </select>
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Xác nhận</button>
+        </p>
+            
+        </form>
+        <div class="flex flex-wrap">
+            <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+                <!--Metric Card-->
+                <div class="bg-gradient-to-b from-green-200 to-green-100 border-b-4 border-green-600 rounded-lg shadow-xl p-5">
+                    <div class="flex flex-row items-center">
+                        <div class="flex-shrink pr-4">
+                            <div class="rounded-full p-5 bg-green-600"><i class="fa fa-wallet fa-2x fa-inverse"></i></div>
+                        </div>
+                        <div class="flex-1 text-right md:text-center">
+                            <h2 class="font-bold uppercase text-gray-600">TỔNG DOANH THU</h2>
+                            <p class="font-bold text-3xl">@string.Format("{0:#,0}", ViewBag.tk.tongDoanhThu)đ <span class="text-green-500"><i class="fas fa-caret-up"></i></span></p>
+                        </div>
+                    </div>
+                </div>
+                <!--/Metric Card-->
+            </div>
+            <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+                <!--Metric Card-->
+                <div class="bg-gradient-to-b from-pink-200 to-pink-100 border-b-4 border-pink-500 rounded-lg shadow-xl p-5">
+                    <div class="flex flex-row items-center">
+                        <div class="flex-shrink pr-4">
+                            <div class="rounded-full p-5 bg-pink-600"><i class="fas fa-users fa-2x fa-inverse"></i></div>
+                        </div>
+                        <div class="flex-1 text-right md:text-center">
+                            <h2 class="font-bold uppercase text-gray-600">
+                                TỔNG SỐ NGƯỜI DÙNG
+                            </h2>
+                            <p class="font-bold text-3xl">@ViewBag.tk.tongNguoiDung <span class="text-pink-500"><i class="fas fa-exchange-alt"></i></span></p>
+                        </div>
+                    </div>
+                </div>
+                <!--/Metric Card-->
+            </div>
+            <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+                <!--Metric Card-->
+                <div class="bg-gradient-to-b from-yellow-200 to-yellow-100 border-b-4 border-yellow-600 rounded-lg shadow-xl p-5">
+                    <div class="flex flex-row items-center">
+                        <div class="flex-shrink pr-4">
+                            <div class="rounded-full p-5 bg-yellow-600"><i class="fas fa-user-plus fa-2x fa-inverse"></i></div>
+                        </div>
+                        <div class="flex-1 text-right md:text-center">
+                            <h2 class="font-bold uppercase text-gray-600">NGƯỜI DÙNG MỚI</h2>
+                            <p class="font-bold text-3xl">@ViewBag.tk.nguoiDungMoi <span class="text-yellow-600"><i class="fas fa-caret-up"></i></span></p>
+                        </div>
+                    </div>
+                </div>
+                <!--/Metric Card-->
+            </div>
+            <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+                <!--Metric Card-->
+                <div class="bg-gradient-to-b from-indigo-200 to-indigo-100 border-b-4 border-indigo-500 rounded-lg shadow-xl p-5">
+                    <div class="flex flex-row items-center">
+                        <div class="flex-shrink pr-4">
+                            <div class="rounded-full p-5 bg-indigo-600"><i class="fas fa-server fa-2x fa-inverse"></i></div>
+                        </div>
+                        <div class="flex-1 text-right md:text-center">
+                            <h2 class="font-bold uppercase text-gray-600">Đơn Hàng</h2>
+                            <p class="font-bold text-3xl">@ViewBag.tk.tongDonHang</p>
+                        </div>
+                    </div>
+                </div>
+               
+
+
+                <!--/Metric Card-->
+            </div>
+            <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+                <!--Metric Card-->
+                <div class="bg-gradient-to-b from-blue-200 to-blue-100 border-b-4 border-blue-500 rounded-lg shadow-xl p-5">
+                    <div class="flex flex-row items-center">
+                        <div class="flex-shrink pr-4">
+                            <div class="rounded-full p-5 bg-blue-600"><i class="fas fa-tasks fa-2x fa-inverse"></i></div>
+                        </div>
+                        <div class="flex-1 text-right md:text-center">
+                            <h2 class="font-bold uppercase text-gray-600">Đơn Hàng Giao Thành Công</h2>
+                            <p class="font-bold text-3xl">@ViewBag.tk.tongDonHangDaGiao</p>
+                        </div>
+                    </div>
+                </div>
+                <!--/Metric Card-->
+            </div>
+            <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+                <!--Metric Card-->
+                <div class="bg-gradient-to-b from-red-200 to-red-100 border-b-4 border-red-500 rounded-lg shadow-xl p-5">
+                    <div class="flex flex-row items-center">
+                        <div class="flex-shrink pr-4">
+                            <div class="rounded-full p-5 bg-red-600"><i class="fas fa-inbox fa-2x fa-inverse"></i></div>
+                        </div>
+                        <div class="flex-1 text-right md:text-center">
+                            <h2 class="font-bold uppercase text-gray-600">Sản Phẩm đã nhập</h2>
+                            <p class="font-bold text-3xl">@ViewBag.tk.sanPhamDaNhap <span class="text-red-500"><i class="fas fa-caret-up"></i></span></p>
+                        </div>
+                    </div>
+                </div>
+                <!--/Metric Card-->
+            </div>
+        </div>
+
+        <div class="w-full mt-12">
+            <p class="text-xl pb-3 flex items-center">
+                <i class="fas fa-list mr-3"></i> Danh sách khách hàng
+            </p>
+            <div class="bg-white overflow-auto">
+                <table class="min-w-full bg-white">
+                    <thead class="bg-gray-800 text-white">
+                        <tr>
+                            <th class=" text-left py-3 px-4 uppercase font-semibold text-sm">ID</th>
+                            <th class="w-1/5 text-left py-3 px-4 uppercase font-semibold text-sm">Tên Khách hàng</th>
+                            <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Tài khoản</th>
+                            <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Mật khẩu</th>
+                            <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Ngày sinh</th>
+                            <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Giới tính</th>
+                            <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Địa chỉ</th>
+                            <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Số điện thoại</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-700">
+                        @{
+                            var index = 1;
+                        }
+                        @foreach (var item in Model)
+                        {
+                            <tr class="@(index % 2 == 0 ? "bg-gray-200" : null)">
+                                <td class="text-left py-3 px-4">#@item.Id</td>
+
+                                <td class="w-1/5 text-left py-3 px-4">@item.Ho @item.Ten</td>
+                                <td class="text-left py-3 px-4">@item.TaiKhoan </td>
+                                <td class="text-left py-3 px-4">@item.MatKhau</td>
+                                <td class="text-left py-3 px-4">
+                                    @{
+                                        if (item.NgaySinh != null)
+                                        {
+                                            @item.NgaySinh.Value.ToShortDateString()
+                                        }
+                                        else
+                                        {
+                                            @("---")
+                                        }
+                                    }
+                                </td>
+                                <td class="text-left py-3 px-4">@(item.GioiTinh.HasValue ? (item.GioiTinh.Value ? "Nam" : "Nữ") : "---")</td>
+                                <td class="text-left py-3 px-4">@(item.DiaChi ?? "---")</td>
+                                <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:@(item.Sdt ?? "")">@(item.Sdt ?? "---")</a></td>
+                            </tr>
+                            index++;
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer class="w-full bg-white text-right p-4">
+    </footer>
+</div>
+
+
